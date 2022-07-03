@@ -1,0 +1,29 @@
+@use './theme/utils/' as utils;
+@use './theme/palette/palette.scss' as palette;
+
+:root {
+  @include utils.generate-varaibles(palette.$palette, $prefix: --color);
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+}

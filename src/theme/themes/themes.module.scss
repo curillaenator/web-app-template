@@ -1,0 +1,9 @@
+@use './maps.scss' as maps;
+
+@each $themeName in map-keys(maps.$themes) {
+  .#{'' + $themeName} {
+    @each $key, $value in map-get(maps.$themes, $themeName) {
+      #{$key}: $value;
+    }
+  }
+} ;

@@ -1,0 +1,23 @@
+.light {
+  --color-neutral-100: var(--color-gray-true-100);
+  --color-neutral-200: var(--color-gray-true-200);
+  --color-neutral-300: var(--color-gray-true-300);
+  --color-neutral-400: var(--color-gray-true-400);
+  --color-neutral-500: var(--color-gray-true-500);
+  --color-neutral-600: var(--color-gray-true-600);
+  --color-neutral-700: var(--color-gray-true-700);
+  --color-neutral-800: var(--color-gray-true-800);
+  --color-neutral-900: var(--color-gray-true-900);
+}
+
+.dark {
+  --color-neutral-100: var(--color-gray-true-900);
+  --color-neutral-200: var(--color-gray-true-800);
+  --color-neutral-300: var(--color-gray-true-700);
+  --color-neutral-400: var(--color-gray-true-600);
+  --color-neutral-500: var(--color-gray-true-500);
+  --color-neutral-600: var(--color-gray-true-400);
+  --color-neutral-700: var(--color-gray-true-300);
+  --color-neutral-800: var(--color-gray-true-200);
+  --color-neutral-900: var(--color-gray-true-100);
+}
