@@ -1,0 +1,11 @@
+.curls {
+  position: absolute;
+  top: -16px;
+  right: 0;
+  fill: transparent;
+  transition: 0.2s ease-in-out;
+
+  &_visible {
+    fill: var(--color-neutral-100);
+  }
+}

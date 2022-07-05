@@ -1,8 +1,89 @@
+$time: 0.2s;
+
 .sidebar {
   position: absolute;
   top: 0;
   left: 0;
-  width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 56px;
   height: 100vh;
   background-color: var(--color-primary);
+  transition: width $time ease-in-out;
+  overflow: hidden;
+
+  &_opened {
+    width: 256px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .logo {
+      width: 100%;
+      height: 56px;
+      margin-bottom: 16px;
+      color: var(--color-neutral-100);
+    }
+
+    .tab {
+      position: relative;
+      width: 100%;
+      transition: $time ease-in-out;
+
+      &_active {
+        width: calc(100% - 16px);
+      }
+    }
+
+    .navlink {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      width: 100%;
+      text-align: left;
+      padding: 0 16px;
+      height: 56px;
+      border-radius: 16px 0 0 16px;
+      text-decoration: none;
+      transition: $time ease-in-out;
+
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--color-neutral-100);
+
+      &_active {
+        position: relative;
+        background-color: var(--color-neutral-100);
+
+        color: var(--color-neutral-900);
+      }
+
+      &:not(.navlink_active) {
+        &:hover {
+          color: var(--color-neutral-200);
+        }
+
+        &:active {
+          color: var(--color-neutral-300);
+        }
+      }
+    }
+  }
+
+  .openButton {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    width: 100%;
+    height: 56px;
+    text-align: left;
+    padding: 0 16px;
+    color: var(--color-neutral-100);
+  }
 }

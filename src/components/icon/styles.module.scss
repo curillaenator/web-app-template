@@ -1,0 +1,47 @@
+$appearances: (
+  light: (
+    color: var(--color-neutral-100),
+  ),
+  dark: (
+    color: var(--color-neutral-900),
+  ),
+  primary: (
+    color: var(--color-primary),
+  ),
+  secondary: (
+    color: var(--color-secondary),
+  ),
+  positive: (
+    color: var(--color-positive),
+  ),
+  attention: (
+    color: var(--color-attention),
+  ),
+  negative: (
+    color: var(--color-negative),
+  ),
+);
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  flex-shrink: 0;
+
+  svg {
+    width: 20px;
+    height: 20px;
+
+    path {
+      fill: var(--icon-fill-color);
+      transition: 0.1s ease-in-out;
+    }
+  }
+}
+
+@each $appearance in map-keys($appearances) {
+  .#{'' + $appearance} {
+    --icon-fill-color: #{map-get($appearances, $appearance, 'color')};
+  }
+}

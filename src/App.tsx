@@ -8,7 +8,7 @@ import { themeStore } from '@src/store/theme';
 import { Header } from '@src/components/header';
 import { Sidebar } from '@src/components/sidebar';
 
-import { Main } from '@src/pages';
+import { Home, Settings, Dummy } from '@src/pages';
 
 import modes from '@src/theme/modes/modes.module.scss';
 import themes from '@src/theme/themes/themes.module.scss';
@@ -34,7 +34,11 @@ export const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Main />} />
+        <Route index element={<Home />} />
+        <Route path="works" element={<Dummy />} />
+        <Route path="skills" element={<Dummy />} />
+        <Route path="about" element={<Dummy />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
   );
