@@ -1,7 +1,7 @@
 import { createStore, createEvent } from 'effector';
 
-type Modes = 'dark' | 'light';
-type Themes = 'ocean' | 'fire';
+export type Modes = 'dark' | 'light';
+export type Themes = 'ocean' | 'fire' | 'violet';
 
 interface ThemeStore {
   theme: Themes;

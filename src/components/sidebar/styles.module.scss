@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-shrink: 0;
   width: 56px;
   height: 100vh;
   background-color: var(--color-primary);
@@ -27,7 +28,7 @@
     .tab {
       position: relative;
       width: 100%;
-      transition: #{map-get(vars.$transitions, 'sidebar')};
+      transition: width #{map-get(vars.$transitions, 'sidebar')};
 
       &_active {
         width: calc(100% - 16px);
@@ -45,26 +46,34 @@
       height: 56px;
       border-radius: 16px 0 0 16px;
       text-decoration: none;
-      transition: #{map-get(vars.$transitions, 'sidebar')};
 
       font-size: 20px;
       font-weight: 600;
-      color: var(--color-neutral-100);
+
+      span[data-label='navlink-text'] {
+        color: var(--color-neutral-100);
+      }
 
       &_active {
         position: relative;
         background-color: var(--color-neutral-100);
 
-        color: var(--color-neutral-900);
+        span[data-label='navlink-text'] {
+          color: var(--color-neutral-900);
+        }
       }
 
       &:not(.navlink_active) {
         &:hover {
-          color: var(--color-neutral-200);
+          span[data-label='navlink-text'] {
+            color: var(--color-neutral-200);
+          }
         }
 
         &:active {
-          color: var(--color-neutral-300);
+          span[data-label='navlink-text'] {
+            color: var(--color-neutral-300);
+          }
         }
       }
     }

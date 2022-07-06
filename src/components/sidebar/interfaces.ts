@@ -6,3 +6,7 @@ export interface Item {
   to: string;
   icon: IconsType;
 }
+
+export interface SidebarProps {
+  items: Item[];
+}
