@@ -1,7 +1,7 @@
 {
-  "name": "dsystem",
+  "name": "web-app-template",
   "version": "1.0.0",
-  "description": "nice components",
+  "description": "ready to setup web application",
   "main": "index.tsx",
   "author": "Kirill Art <curillaenator@gmail.com>",
   "license": "MIT",
