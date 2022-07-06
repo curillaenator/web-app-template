@@ -25,32 +25,41 @@ export const Sidebar: FC = () => {
         [s.sidebar_opened]: open,
       })}
     >
-      <div className={s.nav}>
-        <div className={s.logo} />
+      <div className={s.block}>
+        <button
+          className={cn(s.menuButton, s.menuButton_mb, {
+            [s.menuButton_active]: open,
+          })}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <Icon icon="menu" />
+        </button>
 
-        {items.map((item) => {
-          const active = useMatch(item.to);
+        <div className={s.nav}>
+          {items.map((item) => {
+            const active = useMatch(item.to);
 
-          return (
-            <div
-              key={item.id}
-              className={cn(s.tab, {
-                [s.tab_active]: !!active && open,
-              })}
-            >
-              <NavLink to={item.to} className={({ isActive }) => cn(s.navlink, { [s.navlink_active]: isActive })}>
-                <Icon icon={item.icon} appearance={!!active ? 'dark' : 'light'} />
+            return (
+              <div
+                key={item.id}
+                className={cn(s.tab, {
+                  [s.tab_active]: !!active && open,
+                })}
+              >
+                <NavLink to={item.to} className={({ isActive }) => cn(s.navlink, { [s.navlink_active]: isActive })}>
+                  <Icon icon={item.icon} appearance={!!active ? 'dark' : 'light'} />
 
-                <span>{item.label}</span>
-              </NavLink>
+                  <span>{item.label}</span>
+                </NavLink>
 
-              <Curls visible={active?.pattern.path === item.to} />
-            </div>
-          );
-        })}
+                <Curls visible={active?.pattern.path === item.to} />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      <button className={s.openButton} onClick={() => setOpen((o) => !o)}>
+      <button className={s.menuButton} onClick={() => setOpen((o) => !o)}>
         <Icon icon={open ? 'arrow-left' : 'arrow-right'} />
       </button>
     </aside>

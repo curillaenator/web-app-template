@@ -1,20 +1,22 @@
-$time: 0.2s;
+@use '../../common/scss/' as vars;
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 56px;
   height: 100vh;
   background-color: var(--color-primary);
-  transition: width $time ease-in-out;
+  transition: width #{map-get(vars.$transitions, 'sidebar')};
   overflow: hidden;
 
   &_opened {
-    width: 256px;
+    width: #{map-get(vars.$widths, 'sidebar')};
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
   }
 
   .nav {
@@ -22,17 +24,10 @@ $time: 0.2s;
     flex-direction: column;
     align-items: flex-end;
 
-    .logo {
-      width: 100%;
-      height: 56px;
-      margin-bottom: 16px;
-      color: var(--color-neutral-100);
-    }
-
     .tab {
       position: relative;
       width: 100%;
-      transition: $time ease-in-out;
+      transition: #{map-get(vars.$transitions, 'sidebar')};
 
       &_active {
         width: calc(100% - 16px);
@@ -50,7 +45,7 @@ $time: 0.2s;
       height: 56px;
       border-radius: 16px 0 0 16px;
       text-decoration: none;
-      transition: $time ease-in-out;
+      transition: #{map-get(vars.$transitions, 'sidebar')};
 
       font-size: 20px;
       font-weight: 600;
@@ -75,7 +70,7 @@ $time: 0.2s;
     }
   }
 
-  .openButton {
+  .menuButton {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -85,5 +80,19 @@ $time: 0.2s;
     text-align: left;
     padding: 0 16px;
     color: var(--color-neutral-100);
+
+    &_mb {
+      margin-bottom: 32px;
+    }
+
+    svg {
+      transition: #{map-get(vars.$transitions, 'sidebar')};
+    }
+
+    &_active {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
   }
 }

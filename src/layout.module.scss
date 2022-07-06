@@ -1,10 +1,18 @@
+@use './common/scss/' as vars;
+
 .layout {
+  display: flex;
+
   position: relative;
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-neutral-100);
 
   .outlet {
-    margin-left: 80px;
+    width: 100%;
+
+    & > main {
+      padding: 32px;
+    }
   }
 }

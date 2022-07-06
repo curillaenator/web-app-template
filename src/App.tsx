@@ -19,13 +19,15 @@ const Layout: FC = () => {
 
   return (
     <div className={cn(s.layout, modes[mode], themes[theme])}>
-      <Header />
-
       <Sidebar />
 
-      <main className={s.outlet}>
-        <Outlet />
-      </main>
+      <div className={cn(s.outlet)}>
+        <Header />
+
+        <main>
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };
