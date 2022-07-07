@@ -20,8 +20,7 @@ export const Settings: FC = () => {
         id={'current-mode-selector'}
         type="switch"
         checked={mode === 'dark'}
-        value={mode === 'dark' ? 'light' : 'dark'}
-        onChange={(mode) => setMode(mode as Modes)}
+        onChange={() => setMode(mode === 'dark' ? 'light' : 'dark')}
       >
         {mode.slice(0, 1).toUpperCase() + mode.slice(1)}
       </Selector>

@@ -1,0 +1,117 @@
+$scales: (
+  'l': (
+    gap: 16px,
+    height: 56px,
+    fontsize: 16px,
+    rounded: 16px,
+    circular: 28px,
+    padding-x: 16px,
+  ),
+  'm': (
+    gap: 14px,
+    height: 40px,
+    fontsize: 16px,
+    rounded: 14px,
+    circular: 20px,
+    padding-x: 14px,
+  ),
+  's': (
+    gap: 12px,
+    height: 32px,
+    fontsize: 14px,
+    rounded: 12px,
+    circular: 16px,
+    padding-x: 11px,
+  ),
+);
+
+$appearances: (
+  primary: (
+    bg: var(--color-primary),
+    bg-hover: var(--color-primary-600),
+    bg-active: var(--color-primary-700),
+  ),
+  secondary: (
+    bg: var(--color-secondary),
+    bg-hover: var(--color-secondary-600),
+    bg-active: var(--color-secondary-700),
+  ),
+  positive: (
+    bg: var(--color-positive),
+    bg-hover: var(--color-positive-600),
+    bg-active: var(--color-positive-700),
+  ),
+  attention: (
+    bg: var(--color-attention),
+    bg-hover: var(--color-attention-600),
+    bg-active: var(--color-attention-700),
+  ),
+  negative: (
+    bg: var(--color-negative),
+    bg-hover: var(--color-negative-600),
+    bg-active: var(--color-negative-700),
+  ),
+  disabled: (
+    bg: var(--color-neutral-300),
+    bg-hover: var(--color-neutral-300),
+    bg-active: var(--color-neutral-300),
+  ),
+);
+
+@function get-scale($prop, $size: 'm') {
+  @return map-get($scales, $size, $prop);
+}
+
+@function get-appearance($prop, $schema: 'primary') {
+  @return map-get($appearances, $schema, $prop);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: var(--button-gap);
+  width: fit-content;
+  height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background);
+
+  font-size: var(--button-fontsize);
+  font-weight: 600;
+  color: var(--color-neutral-100);
+
+  &_rounded {
+    --button-border-radius: var(--button-radius-rounded);
+  }
+
+  &_circular {
+    --button-border-radius: var(--button-radius-circular);
+  }
+
+  &:hover {
+    background-color: var(--button-background-hover);
+  }
+
+  &:active {
+    background-color: var(--button-background-active);
+  }
+}
+
+@each $size in map-keys($scales) {
+  .size_#{'' + $size} {
+    --button-gap: #{get-scale('gap', $size)};
+    --button-height: #{get-scale('height', $size)};
+    --button-fontsize: #{get-scale('fontsize', $size)};
+    --button-radius-rounded: #{get-scale('rounded', $size)};
+    --button-radius-circular: #{get-scale('circular', $size)};
+    --button-padding-x: #{get-scale('padding-x', $size)};
+  }
+}
+
+@each $appearance in map-keys($appearances) {
+  .#{'' + $appearance} {
+    --button-background: #{get-appearance('bg', $appearance)};
+    --button-background-hover: #{get-appearance('bg-hover', $appearance)};
+    --button-background-active: #{get-appearance('bg-active', $appearance)};
+  }
+}
