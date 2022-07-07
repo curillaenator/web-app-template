@@ -6,8 +6,8 @@ import { useStore } from 'effector-react';
 import { themeStore } from '@src/store/theme';
 
 import { Header } from '@src/components/header';
-
 import { Sidebar } from '@src/components/sidebar';
+
 import { items } from '@src/config/sidebar';
 
 import { Home, Settings, Dummy, RickMorty } from '@src/pages';

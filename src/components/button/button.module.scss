@@ -88,6 +88,10 @@ $appearances: (
     --button-border-radius: var(--button-radius-circular);
   }
 
+  &_disabled {
+    cursor: default;
+  }
+
   &:hover {
     background-color: var(--button-background-hover);
   }

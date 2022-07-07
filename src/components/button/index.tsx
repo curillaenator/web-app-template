@@ -10,9 +10,15 @@ import s from './button.module.scss';
 const getClassname = (props: ButtonProps) => {
   const { size = 'm', appearance = 'primary', shape = 'rounded', disabled } = props;
 
-  // if (disabled) return cn(s.button, s[`size_${size}`], s.disabled);
+  const resolveAppearance = () => {
+    if (disabled) return 'disabled';
 
-  return cn(s.button, s[`button_${shape}`], s[`size_${size}`], s[appearance]);
+    return appearance;
+  };
+
+  return cn(s.button, s[`button_${shape}`], s[`size_${size}`], s[resolveAppearance()], {
+    [s.button_disabled]: disabled,
+  });
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {

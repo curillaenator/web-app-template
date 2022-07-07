@@ -8,9 +8,33 @@
 
   .outlet {
     width: 100%;
+    max-height: calc(100vh - 80px);
 
     & > main {
       padding: 32px;
+      height: 100%;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+
+        &-track {
+          border-radius: 2px 4px;
+          background-color: var(--color-neutral-300);
+        }
+
+        &-thumb {
+          border-radius: 2px;
+          width: 25%;
+          height: 25%;
+          background-color: var(--color-primary);
+
+          &:hover {
+            background-color: var(--color-neutral-900);
+          }
+        }
+      }
     }
   }
 }

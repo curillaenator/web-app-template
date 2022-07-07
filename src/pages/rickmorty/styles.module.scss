@@ -3,14 +3,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-
-    .episode {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 20%;
-      height: 300px;
-    }
   }
 
   .pagination {

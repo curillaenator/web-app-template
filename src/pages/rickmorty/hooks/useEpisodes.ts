@@ -4,10 +4,9 @@ import { getEpisodes, rickmortyStore } from '@src/store/rickmorty';
 
 export const useEpisodes = () => {
   const { episodes } = useStore(rickmortyStore);
-  const [page, setPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
+  const loading = useStore(getEpisodes.pending);
 
-  // getEpisodes.pending.watch((pending) => setLoading(pending));
+  const [page, setPage] = useState<number>(1);
 
   const next = () => setPage((prevPage) => prevPage + 1);
   const prev = () => setPage((prevPage) => prevPage - 1);
@@ -16,5 +15,5 @@ export const useEpisodes = () => {
     getEpisodes(page);
   }, [page]);
 
-  return { episodes, loading, next, prev };
+  return { page, episodes, loading, next, prev };
 };
