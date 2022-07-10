@@ -10,7 +10,7 @@ import { Sidebar } from '@src/components/sidebar';
 
 import { items } from '@src/config/sidebar';
 
-import { Home, Settings, Dummy, RickMorty } from '@src/pages';
+import { Home, Components, Settings, Dummy, RickMorty } from '@src/pages';
 
 import modes from '@src/theme/modes/modes.module.scss';
 import themes from '@src/theme/themes/themes.module.scss';
@@ -55,7 +55,7 @@ export const App: FC = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route path="works" element={<Dummy />} />
+        <Route path="components" element={<Components />} />
         <Route path="skills" element={<Dummy />} />
         <Route path="rickmorty" element={<RickMorty />} />
         <Route path="settings" element={<Settings />} />

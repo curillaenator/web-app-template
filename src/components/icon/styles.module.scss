@@ -22,7 +22,21 @@ $appearances: (
   ),
 );
 
+$sizes: (
+  l: (
+    iconsize: 20px,
+  ),
+  m: (
+    iconsize: 16px,
+  ),
+  s: (
+    iconsize: 14px,
+  ),
+);
+
 .icon {
+  --button-icon-size: #{map-get($sizes, 'm', 'iconsize')};
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,12 +44,11 @@ $appearances: (
   flex-shrink: 0;
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: var(--button-icon-size);
+    height: var(--button-icon-size);
 
     path {
       fill: var(--icon-fill-color);
-      transition: 0.1s ease-in-out;
     }
   }
 }
@@ -43,5 +56,11 @@ $appearances: (
 @each $appearance in map-keys($appearances) {
   .#{'' + $appearance} {
     --icon-fill-color: #{map-get($appearances, $appearance, 'color')};
+  }
+}
+
+@each $size in map-keys($sizes) {
+  .size_#{'' + $size} {
+    --button-icon-size: #{map-get($sizes, $size, 'iconsize')};
   }
 }

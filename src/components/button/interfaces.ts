@@ -5,5 +5,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   appearance?: 'primary' | 'secondary' | 'positive' | 'attention' | 'negative';
   size?: 'l' | 'm' | 's';
   shape?: 'rounded' | 'circular';
+  variant?: 'solid' | 'ghost' | 'outline';
   icon?: IconsType;
 }

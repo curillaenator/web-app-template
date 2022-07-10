@@ -41,7 +41,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
                 })}
               >
                 <NavLink to={item.to} className={({ isActive }) => cn(s.navlink, { [s.navlink_active]: isActive })}>
-                  <Icon icon={item.icon} appearance={!!active ? 'dark' : 'light'} />
+                  <Icon icon={item.icon} appearance={!!active ? 'dark' : 'light'} size="l" />
 
                   <span data-label="navlink-text">{item.label}</span>
                 </NavLink>

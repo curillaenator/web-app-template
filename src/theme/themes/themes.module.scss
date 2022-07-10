@@ -5,5 +5,8 @@
     @each $key, $value in map-get(maps.$themes, $themeName) {
       #{$key}: $value;
     }
+    @each $cKey, $cValue in maps.$commonColors {
+      #{$cKey}: $cValue;
+    }
   }
 } ;

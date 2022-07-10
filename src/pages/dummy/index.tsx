@@ -1,9 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 export const Dummy: FC = () => {
-  return (
-    <div>
-      <h1>Dummy Page</h1>
-    </div>
-  );
+  return <h1>Dummy Page</h1>;
 };

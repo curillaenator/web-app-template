@@ -3,25 +3,34 @@ $scales: (
     gap: 16px,
     height: 56px,
     fontsize: 16px,
+    lineheight: 24px,
     rounded: 16px,
     circular: 28px,
     padding-x: 16px,
+    padding-y: 16px,
+    bordersize: 2px,
   ),
   'm': (
-    gap: 14px,
+    gap: 10px,
     height: 40px,
     fontsize: 16px,
-    rounded: 14px,
+    lineheight: 20px,
+    rounded: 12px,
     circular: 20px,
     padding-x: 14px,
+    padding-y: 10px,
+    bordersize: 1.8px,
   ),
   's': (
-    gap: 12px,
+    gap: 8px,
     height: 32px,
     fontsize: 14px,
-    rounded: 12px,
+    lineheight: 18px,
+    rounded: 10px,
     circular: 16px,
-    padding-x: 11px,
+    padding-x: 12px,
+    padding-y: 7px,
+    bordersize: 1.4px,
   ),
 );
 
@@ -58,6 +67,54 @@ $appearances: (
   ),
 );
 
+$variants: (
+  solid: (
+    shadow: 0 0 0 0 transparent,
+    shadow-hover: 0 0 0 0 transparent,
+    shadow-active: 0 0 0 0 transparent,
+    bg: var(--button-main-color),
+    bg-hover: var(--button-hover-color),
+    bg-active: var(--button-active-color),
+    text-color: var(--color-neutral-100),
+    text-color-hover: var(--color-neutral-100),
+    text-color-active: var(--color-neutral-100),
+  ),
+  // elevate: (
+  //   shadow: 0 4px 16px 0 var(--button-main-color),
+  //   shadow-hover: 0 4px 16px 0 var(--button-hover-color),
+  //   shadow-active: 0 4px 16px 0 var(--button-active-color),
+  //   bg: var(--button-main-color),
+  //   bg-hover: var(--button-hover-color),
+  //   bg-active: var(--button-active-color),
+  //   text-color: var(--color-neutral-100),
+  //   text-color-hover: var(--color-neutral-100),
+  //   text-color-active: var(--color-neutral-100),
+  // ),
+  ghost:
+    (
+      shadow: 0 0 0 0 transparent,
+      shadow-hover: 0 0 0 0 transparent,
+      shadow-active: 0 0 0 0 transparent,
+      bg: transparent,
+      bg-hover: transparent,
+      bg-active: transparent,
+      text-color: var(--button-main-color),
+      text-color-hover: var(--button-hover-color),
+      text-color-active: var(--button-active-color),
+    ),
+  outline: (
+    shadow: inset 0 0 0 var(--button-bordersize) var(--button-main-color),
+    shadow-hover: inset 0 0 0 var(--button-bordersize) var(--button-hover-color),
+    shadow-active: inset 0 0 0 var(--button-bordersize) var(--button-active-color),
+    bg: transparent,
+    bg-hover: transparent,
+    bg-active: transparent,
+    text-color: var(--button-main-color),
+    text-color-hover: var(--button-hover-color),
+    text-color-active: var(--button-active-color),
+  ),
+);
+
 @function get-scale($prop, $size: 'm') {
   @return map-get($scales, $size, $prop);
 }
@@ -66,19 +123,25 @@ $appearances: (
   @return map-get($appearances, $schema, $prop);
 }
 
+@function get-variant($prop, $variant: 'solid') {
+  @return map-get($variants, $variant, $prop);
+}
+
 .button {
   display: flex;
   align-items: center;
   gap: var(--button-gap);
   width: fit-content;
   height: var(--button-height);
-  padding: 0 var(--button-padding-x);
+  padding: var(--button-padding-y) var(--button-padding-x);
   border-radius: var(--button-border-radius);
   background-color: var(--button-background);
+  box-shadow: var(--button-box-shadow);
 
   font-size: var(--button-fontsize);
+  line-height: var(--button-lineheight);
   font-weight: 600;
-  color: var(--color-neutral-100);
+  color: var(--button-text-color);
 
   &_rounded {
     --button-border-radius: var(--button-radius-rounded);
@@ -92,12 +155,28 @@ $appearances: (
     cursor: default;
   }
 
+  & > span > svg > path {
+    fill: var(--button-text-color);
+  }
+
   &:hover {
     background-color: var(--button-background-hover);
+    box-shadow: var(--button-box-shadow-hover);
+    color: var(--button-text-color-hover);
+
+    & > span > svg > path {
+      fill: var(--button-text-color-hover);
+    }
   }
 
   &:active {
     background-color: var(--button-background-active);
+    box-shadow: var(--button-box-shadow-active);
+    color: var(--button-text-color-active);
+
+    & > span > svg > path {
+      fill: var(--button-text-color-active);
+    }
   }
 }
 
@@ -106,16 +185,33 @@ $appearances: (
     --button-gap: #{get-scale('gap', $size)};
     --button-height: #{get-scale('height', $size)};
     --button-fontsize: #{get-scale('fontsize', $size)};
+    --button-lineheight: #{get-scale('lineheight', $size)};
     --button-radius-rounded: #{get-scale('rounded', $size)};
     --button-radius-circular: #{get-scale('circular', $size)};
     --button-padding-x: #{get-scale('padding-x', $size)};
+    --button-padding-y: #{get-scale('padding-y', $size)};
+    --button-bordersize: #{get-scale('bordersize', $size)};
   }
 }
 
 @each $appearance in map-keys($appearances) {
   .#{'' + $appearance} {
-    --button-background: #{get-appearance('bg', $appearance)};
-    --button-background-hover: #{get-appearance('bg-hover', $appearance)};
-    --button-background-active: #{get-appearance('bg-active', $appearance)};
+    --button-main-color: #{get-appearance('bg', $appearance)};
+    --button-hover-color: #{get-appearance('bg-hover', $appearance)};
+    --button-active-color: #{get-appearance('bg-active', $appearance)};
+  }
+}
+
+@each $variant in map-keys($variants) {
+  .#{'' + $variant} {
+    --button-box-shadow: #{get-variant('shadow', $variant)};
+    --button-box-shadow-hover: #{get-variant('shadow-hover', $variant)};
+    --button-box-shadow-active: #{get-variant('shadow-active', $variant)};
+    --button-background: #{get-variant('bg', $variant)};
+    --button-background-hover: #{get-variant('bg-hover', $variant)};
+    --button-background-active: #{get-variant('bg-active', $variant)};
+    --button-text-color: #{get-variant('text-color', $variant)};
+    --button-text-color-hover: #{get-variant('text-color-hover', $variant)};
+    --button-text-color-active: #{get-variant('text-color-active', $variant)};
   }
 }
