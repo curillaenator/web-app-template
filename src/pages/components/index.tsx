@@ -1,57 +1,17 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 
-import { Button } from '@src/components/button';
+import { Routes, Route, NavLink } from 'react-router-dom';
 
-import s from './styles.module.scss';
-
-import { BUTTONS_APPEARANCES, BUTTONS_SIZES } from './constants';
-
-const Flex: FC<{ children: ReactNode }> = ({ children }) => {
-  return <div className={s.block}>{children}</div>;
-};
+import { ButtonStory } from './stories/Button';
 
 export const Components: FC = () => {
   return (
-    <div className={s.page}>
-      <h1>Dummy Page</h1>
+    <>
+      <NavLink to="button">Btn</NavLink>
 
-      <h2>Button</h2>
-
-      <h3>Solid</h3>
-
-      {BUTTONS_SIZES.map((bSize) => (
-        <Flex>
-          {BUTTONS_APPEARANCES.map((bAppearance) => (
-            <Button key={bAppearance} appearance={bAppearance} size={bSize} icon="idea" variant="solid">
-              {'ABC' + ' ' + bAppearance + ' ' + bSize?.toUpperCase()}
-            </Button>
-          ))}
-        </Flex>
-      ))}
-
-      <h3>Outline</h3>
-
-      {BUTTONS_SIZES.map((bSize) => (
-        <Flex>
-          {BUTTONS_APPEARANCES.map((bAppearance) => (
-            <Button key={bAppearance} appearance={bAppearance} size={bSize} icon="idea" variant="outline">
-              {'ABC' + ' ' + bAppearance + ' ' + bSize?.toUpperCase()}
-            </Button>
-          ))}
-        </Flex>
-      ))}
-
-      <h3>Ghost</h3>
-
-      {BUTTONS_SIZES.map((bSize) => (
-        <Flex>
-          {BUTTONS_APPEARANCES.map((bAppearance) => (
-            <Button key={bAppearance} appearance={bAppearance} size={bSize} icon="idea" variant="ghost">
-              {'ABC' + ' ' + bAppearance + ' ' + bSize?.toUpperCase()}
-            </Button>
-          ))}
-        </Flex>
-      ))}
-    </div>
+      <Routes>
+        <Route path="button" element={<ButtonStory />} />
+      </Routes>
+    </>
   );
 };

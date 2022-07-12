@@ -1,10 +1,9 @@
-.page {
+.flexmap {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%;
 
-  .block {
+  .flex {
     display: flex;
     flex-wrap: wrap;
     width: 100%;

@@ -34,36 +34,40 @@ const MainLayout: FC = () => {
   );
 };
 
-const ItemLayout: FC = () => {
-  const { mode, theme } = useStore(themeStore);
+// const ItemLayout: FC = () => {
+//   const { mode, theme } = useStore(themeStore);
 
-  return (
-    <div className={cn(s.layout, modes[mode], themes[theme])}>
-      <div className={cn(s.outlet)}>
-        <h1>This is another layout</h1>
+//   return (
+//     <div className={cn(s.layout, modes[mode], themes[theme])}>
+//       <div className={cn(s.outlet)}>
+//         <h1>This is another layout</h1>
 
-        <main>
-          <Outlet />
-        </main>
-      </div>
-    </div>
-  );
-};
+//         <main>
+//           <Outlet />
+//         </main>
+//       </div>
+//     </div>
+//   );
+// };
 
 export const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-        <Route path="components" element={<Components />} />
+
+        <Route path="components/*" element={<Components />} />
+
         <Route path="skills" element={<Dummy />} />
+
         <Route path="rickmorty" element={<RickMorty />} />
+
         <Route path="settings" element={<Settings />} />
       </Route>
 
-      <Route path="item" element={<ItemLayout />}>
+      {/* <Route path="item" element={<ItemLayout />}>
         <Route index element={<Dummy />} />
-      </Route>
+      </Route> */}
     </Routes>
   );
 };

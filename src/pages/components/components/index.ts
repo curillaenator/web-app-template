@@ -1,0 +1,1 @@
+export { Flexmap } from './flexmap';
