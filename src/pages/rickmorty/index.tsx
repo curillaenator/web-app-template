@@ -38,3 +38,5 @@ export const RickMorty: FC = () => {
     </div>
   );
 };
+
+export default RickMorty;

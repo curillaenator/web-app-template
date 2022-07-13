@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 
 import { useStore } from 'effector-react';
-import { themeStore } from '@src/store/theme';
 
 import { Selector } from '@src/components/selector';
 
-import { setMode, setTheme, Modes, Themes } from '@src/store/theme';
+import { setMode, setTheme, Modes, Themes, themeStore } from '@src/store/theme';
 
 export const Settings: FC = () => {
   const { mode, theme } = useStore(themeStore);
@@ -46,3 +45,5 @@ export const Settings: FC = () => {
     </div>
   );
 };
+
+export default Settings;

@@ -7,6 +7,12 @@
   height: 80px;
 
   padding: 0 32px;
-  // background-color: var(--color-primary);
   color: var(--color-primary);
+
+  .slot {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+  }
 }

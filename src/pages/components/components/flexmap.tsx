@@ -12,7 +12,7 @@ export const Flexmap: FC<FlexmapProps> = (props) => {
 
   return (
     <div className={s.flexmap}>
-      <h2>{title}</h2>
+      <span>{title}</span>
 
       <div className={s.flex}>{children}</div>
     </div>

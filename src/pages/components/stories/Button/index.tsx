@@ -11,7 +11,7 @@ import s from '../styles.module.scss';
 export const ButtonStory: FC = () => {
   return (
     <div className={s.page}>
-      <h1>Button</h1>
+      <h2>Button</h2>
 
       {BUTTONS_SIZES.map((bSize) => (
         <Flexmap title={`Solid ${bSize}`} key={`Solid ${bSize}`}>
@@ -45,3 +45,5 @@ export const ButtonStory: FC = () => {
     </div>
   );
 };
+
+export default ButtonStory;

@@ -1,17 +1,38 @@
-import React, { FC } from 'react';
+import React, { FC, Suspense } from 'react';
+import { Routes, Route, NavLink, useMatch } from 'react-router-dom';
 
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Card } from '@src/components/card';
 
-import { ButtonStory } from './stories/Button';
+import { Gridmap } from './components/gridmap';
+
+import { componentsRoutes } from './config';
 
 export const Components: FC = () => {
+  const parentPage = useMatch('components');
+
   return (
     <>
-      <NavLink to="button">Btn</NavLink>
+      {parentPage && (
+        <Gridmap>
+          {componentsRoutes.map(({ id, route }) => (
+            <NavLink key={id} to={route}>
+              <Card width="100%" height="100%">
+                {route}
+              </Card>
+            </NavLink>
+          ))}
+        </Gridmap>
+      )}
 
-      <Routes>
-        <Route path="button" element={<ButtonStory />} />
-      </Routes>
+      <Suspense fallback={<div>...loading</div>}>
+        <Routes>
+          {componentsRoutes.map(({ id, route, Element }) => (
+            <Route key={id} path={route} element={<Element />} />
+          ))}
+        </Routes>
+      </Suspense>
     </>
   );
 };
+
+export default Components;
