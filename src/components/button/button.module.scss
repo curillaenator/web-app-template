@@ -129,6 +129,7 @@ $variants: (
 
 .button {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: var(--button-gap);
   width: fit-content;

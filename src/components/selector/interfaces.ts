@@ -6,5 +6,5 @@ export interface SelectorProps {
   checked: boolean;
   onChange: (value: string) => void;
   children?: ReactNode;
-  type?: 'radio' | 'switch';
+  type?: 'radio' | 'switch' | 'checkbox';
 }

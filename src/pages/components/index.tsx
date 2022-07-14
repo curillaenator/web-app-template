@@ -3,8 +3,7 @@ import { Routes, Route, NavLink, useMatch } from 'react-router-dom';
 
 import { Card } from '@src/components/card';
 
-import { Gridmap } from './components/gridmap';
-
+import { Gridmap } from './components';
 import { componentsRoutes } from './config';
 
 export const Components: FC = () => {
@@ -12,7 +11,7 @@ export const Components: FC = () => {
 
   return (
     <>
-      {parentPage && (
+      {!!parentPage && (
         <Gridmap>
           {componentsRoutes.map(({ id, route }) => (
             <NavLink key={id} to={route}>

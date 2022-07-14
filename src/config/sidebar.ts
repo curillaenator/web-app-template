@@ -3,8 +3,8 @@ import { Item } from '@src/components/sidebar';
 export const items: Item[] = [
   { id: 'home', to: '/', label: 'Home', icon: 'home' },
   { id: 'components', to: 'components', label: 'Components', icon: 'bricks' },
-  { id: 'skills', to: 'skills', label: 'Skills', icon: 'idea' },
-  { id: 'rickmorty', to: 'rickmorty', label: 'Rick&Morty', icon: 'graphql' },
+  { id: 'manager', to: 'manager', label: 'Manager', icon: 'idea' },
+  // { id: 'rickmorty', to: 'rickmorty', label: 'Rick&Morty', icon: 'graphql' },
   { id: 'settings', to: 'settings', label: 'Settings', icon: 'settings' },
 ];
 

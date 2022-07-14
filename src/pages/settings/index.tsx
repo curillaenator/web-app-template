@@ -11,8 +11,6 @@ export const Settings: FC = () => {
 
   return (
     <div>
-      <h1>Settings</h1>
-
       <h2>Mode</h2>
 
       <Selector

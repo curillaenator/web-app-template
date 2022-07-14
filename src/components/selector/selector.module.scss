@@ -31,13 +31,12 @@
     padding: 4px;
     width: var(--selector-togler-width);
     height: 20px;
-    border-radius: 10px;
     box-shadow: inset 0 0 0 2px var(--switch-toggler-color);
 
     .inner {
       width: 12px;
       height: 12px;
-      border-radius: 50%;
+
       background-color: var(--switch-toggler-color);
       transition: transform #{map-get(vars.$transitions, switch)};
     }
@@ -45,15 +44,39 @@
     &_switch {
       --selector-togler-width: 32px;
 
-      .inner_active {
-        transform: translateX(100%);
+      border-radius: 10px;
+
+      .inner {
+        border-radius: 50%;
+
+        &_active {
+          transform: translateX(100%);
+        }
       }
     }
 
     &_radio {
       --selector-togler-width: 20px;
 
+      border-radius: 10px;
+
       .inner {
+        border-radius: 50%;
+        opacity: 0;
+
+        &_active {
+          opacity: 1;
+        }
+      }
+    }
+
+    &_checkbox {
+      --selector-togler-width: 20px;
+
+      border-radius: 4px;
+
+      .inner {
+        border-radius: 2px;
         opacity: 0;
 
         &_active {

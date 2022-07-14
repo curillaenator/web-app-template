@@ -13,16 +13,20 @@
   ],
   "scripts": {
     "start": "webpack serve --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "server": "json-graphql-server ./gql/db.js --p 4000",
+    "dev": "concurrently \"yarn server\" \"yarn start\""
   },
   "prettier": {
     "singleQuote": true,
     "printWidth": 120
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "classnames": "2.3.1",
     "effector": "^22.3.0",
     "effector-react": "^22.0.6",
+    "graphql": "^16.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
@@ -35,8 +39,10 @@
     "@types/react-dom": "^18.0.5",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^7.2.2",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "json-graphql-server": "^2.3.1",
     "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^2.7.1",
     "sass": "^1.53.0",

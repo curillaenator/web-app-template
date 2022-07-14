@@ -3,11 +3,12 @@ import cn from 'classnames';
 
 import { SelectorProps } from './interfaces';
 
-import s from './switch.module.scss';
+import s from './selector.module.scss';
 
 const typeAssoc: Record<NonNullable<SelectorProps['type']>, HTMLInputElement['type']> = {
   radio: 'radio',
   switch: 'checkbox',
+  checkbox: 'checkbox'
 };
 
 export const Selector = forwardRef<HTMLInputElement, SelectorProps>((props, ref) => {

@@ -19,7 +19,8 @@ const Home = React.lazy(() => import('@src/pages/home'));
 const Components = React.lazy(() => import('@src/pages/components'));
 const Settings = React.lazy(() => import('@src/pages/settings'));
 const Dummy = React.lazy(() => import('@src/pages/dummy'));
-const RickMorty = React.lazy(() => import('@src/pages/rickmorty'));
+const Manager = React.lazy(() => import('@src/pages/manager'));
+// const RickMorty = React.lazy(() => import('@src/pages/rickmorty'));
 
 const MainLayout: FC = () => {
   const { mode, theme } = useStore(themeStore);
@@ -49,9 +50,9 @@ export const App: FC = () => (
 
         <Route path="components/*" element={<Components />} />
 
-        <Route path="skills" element={<Dummy />} />
+        <Route path="manager" element={<Manager />} />
 
-        <Route path="rickmorty" element={<RickMorty />} />
+        {/* <Route path="rickmorty" element={<RickMorty />} /> */}
 
         <Route path="settings" element={<Settings />} />
       </Route>

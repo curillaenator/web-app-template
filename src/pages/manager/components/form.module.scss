@@ -1,0 +1,14 @@
+.form {
+  width: 100%;
+
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
