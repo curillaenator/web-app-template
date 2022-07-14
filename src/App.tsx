@@ -5,29 +5,21 @@ import cn from 'classnames';
 import { useStore } from 'effector-react';
 import { themeStore } from '@src/store/theme';
 
-import { ErrorBoundary } from '@src/components/errorBoundary';
 import { Header } from '@src/components/header';
 import { Sidebar } from '@src/components/sidebar';
 
-import { items } from '@src/config/sidebar';
+import { navItems, Home, Components, Settings, Dummy, Manager } from '@src/appSetup';
 
 import modes from '@src/theme/modes/modes.module.scss';
 import themes from '@src/theme/themes/themes.module.scss';
 import s from '@src/layout.module.scss';
-
-const Home = React.lazy(() => import('@src/pages/home'));
-const Components = React.lazy(() => import('@src/pages/components'));
-const Settings = React.lazy(() => import('@src/pages/settings'));
-const Dummy = React.lazy(() => import('@src/pages/dummy'));
-const Manager = React.lazy(() => import('@src/pages/manager'));
-// const RickMorty = React.lazy(() => import('@src/pages/rickmorty'));
 
 const MainLayout: FC = () => {
   const { mode, theme } = useStore(themeStore);
 
   return (
     <div className={cn(s.layout, modes[mode], themes[theme])}>
-      <Sidebar items={items} />
+      <Sidebar items={navItems} />
 
       <div className={cn(s.outlet)}>
         <Header />
@@ -43,19 +35,17 @@ const MainLayout: FC = () => {
 };
 
 export const App: FC = () => (
-  <ErrorBoundary>
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
+  <Routes>
+    <Route path="/" element={<MainLayout />}>
+      <Route index element={<Home />} />
 
-        <Route path="components/*" element={<Components />} />
+      <Route path="components/*" element={<Components />} />
 
-        <Route path="manager" element={<Manager />} />
+      <Route path="manager" element={<Manager />} />
 
-        {/* <Route path="rickmorty" element={<RickMorty />} /> */}
+      <Route path="github" element={<Dummy />} />
 
-        <Route path="settings" element={<Settings />} />
-      </Route>
-    </Routes>
-  </ErrorBoundary>
+      <Route path="settings" element={<Settings />} />
+    </Route>
+  </Routes>
 );

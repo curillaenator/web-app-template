@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { pathLabelAssoc } from '@src/config/sidebar';
+import { pathLabelAssoc } from '@src/appSetup';
 
 export const useHeaderLogic = () => {
   const { pathname } = useLocation();

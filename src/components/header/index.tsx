@@ -3,11 +3,13 @@ import { useStore } from 'effector-react';
 
 import { useHeaderLogic } from './hooks/useHeaderLogic';
 
-import { setMode, themeStore } from '@src/store/theme';
+import { setMode, setTheme, Themes, themeStore } from '@src/store/theme';
 
 import { Button } from '@src/components/button';
 import { Selector } from '@src/components/selector';
+import { Select } from '@src/components/select';
 
+import { THEME_ITEMS } from './constants';
 import s from './styles.module.scss';
 
 export const Header: FC = () => {
@@ -23,6 +25,8 @@ export const Header: FC = () => {
       </div>
 
       <div className={s.slot}>
+        <Select items={THEME_ITEMS} onSelect={({ id }) => setTheme(id as Themes)} />
+
         <Selector
           id={'current-mode-selector'}
           type="switch"

@@ -1,6 +1,6 @@
 import { IconsType } from '@src/components/icon';
 
-export interface Item {
+export interface NavItem {
   id: string;
   label: string;
   to: string;
@@ -8,5 +8,5 @@ export interface Item {
 }
 
 export interface SidebarProps {
-  items: Item[];
+  items: NavItem[];
 }

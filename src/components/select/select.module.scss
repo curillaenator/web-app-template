@@ -1,0 +1,27 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background-color: var(--color-neutral-200);
+  min-width: 160px;
+  list-style: none;
+  border-radius: 16px;
+
+  .item {
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: var(--color-neutral-900);
+
+    &_active {
+      background-color: var(--color-primary);
+      color: var(--color-neutral-100);
+    }
+
+    &:not(.item_active):hover {
+      background-color: var(--color-neutral-300);
+    }
+  }
+}
