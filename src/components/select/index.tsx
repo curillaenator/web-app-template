@@ -59,7 +59,7 @@ export const Select: FC<SelectProps> = (props) => {
       duration={0}
       content={<Menu items={items} selected={selected} onSelect={handleSelected} ref={menuRef} />}
     >
-      <Button onClick={() => setOpen((prev) => !prev)} ref={triggerRef}>
+      <Button size="s" onClick={() => setOpen((prev) => !prev)} ref={triggerRef}>
         {selected.label}
       </Button>
     </Tippy>

@@ -25,8 +25,6 @@ export const Header: FC = () => {
       </div>
 
       <div className={s.slot}>
-        <Select items={THEME_ITEMS} onSelect={({ id }) => setTheme(id as Themes)} />
-
         <Selector
           id={'current-mode-selector'}
           type="switch"
@@ -35,6 +33,8 @@ export const Header: FC = () => {
         >
           {mode.slice(0, 1).toUpperCase() + mode.slice(1)}
         </Selector>
+
+        <Select items={THEME_ITEMS} onSelect={({ id }) => setTheme(id as Themes)} />
       </div>
     </header>
   );
