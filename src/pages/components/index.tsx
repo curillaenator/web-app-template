@@ -4,7 +4,7 @@ import { Routes, Route, NavLink, useMatch } from 'react-router-dom';
 import { Card } from '@src/components/card';
 
 import { Gridmap } from './components';
-import { componentsRoutes } from './config';
+import { componentsRoutes, routesAssoc } from './config';
 
 export const Components: FC = () => {
   const parentPage = useMatch('components');
@@ -14,9 +14,9 @@ export const Components: FC = () => {
       {!!parentPage && (
         <Gridmap>
           {componentsRoutes.map(({ id, route }) => (
-            <NavLink key={id} to={route}>
+            <NavLink key={id} to={route} style={{ textDecoration: 'none' }}>
               <Card width="100%" height="100%">
-                {route}
+                {routesAssoc[route]}
               </Card>
             </NavLink>
           ))}

@@ -1,5 +1,6 @@
 import React, { FC, useState, useCallback, MouseEvent } from 'react';
 import { useMutation } from '@apollo/client';
+
 import { ALL_TASKS, NEW_TASK, Task } from '@src/apollo/tasks';
 
 import { Button } from '@src/components/button';
@@ -12,8 +13,6 @@ export const CreateForm: FC = () => {
 
   const [createTask, { error }] = useMutation<{ task: Task }>(NEW_TASK, {
     update(cache, { data }) {
-      console.log(data);
-
       const { tasks } = cache.readQuery({
         query: ALL_TASKS,
         variables: { sortField: 'created', sortOrder: 'DESC' },

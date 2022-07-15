@@ -1,4 +1,4 @@
-import { createStore, createEvent } from 'effector';
+import { createStore, createApi } from 'effector';
 
 export type Modes = 'dark' | 'light';
 export type Themes = 'ocean' | 'fire' | 'violet';
@@ -13,9 +13,11 @@ const INITIAL_THEME: ThemeStore = {
   mode: 'light',
 };
 
-export const setMode = createEvent<Modes>();
-export const setTheme = createEvent<Themes>();
+export const themeStore = createStore<ThemeStore>(INITIAL_THEME);
 
-export const themeStore = createStore<ThemeStore>(INITIAL_THEME)
-  .on(setMode, (state, mode) => ({ ...state, mode }))
-  .on(setTheme, (state, theme) => ({ ...state, theme }));
+const themeApi = createApi(themeStore, {
+  setMode: (state, mode: Modes) => ({ ...state, mode }),
+  setTheme: (state, theme: Themes) => ({ ...state, theme }),
+});
+
+export const { setMode, setTheme } = themeApi;

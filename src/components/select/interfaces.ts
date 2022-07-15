@@ -6,5 +6,6 @@ export interface SelectItem {
 
 export interface SelectProps {
   items: SelectItem[];
+  disabled?: boolean;
   onSelect: (item: SelectItem) => void;
 }
